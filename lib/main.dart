@@ -11,15 +11,12 @@ import 'Localizations/app_language.dart';
 import 'Localizations/app_localization.dart';
 import 'Utils/util.dart';
 import 'constants/constants.dart';
-import 'package:timezone/timezone.dart' as tz;
-import 'package:timezone/data/latest.dart' as tz;
 
 /// Initialize the [FlutterLocalNotificationsPlugin] package.
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 FlutterLocalNotificationsPlugin();
 
 void main() async {
-  tz.initializeTimeZones();
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp();

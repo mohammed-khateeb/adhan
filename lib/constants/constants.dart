@@ -29,11 +29,11 @@ const kMessageContainerDecoration = BoxDecoration(
 class CollectionsKey {
 
   static const appInfo = "AppInfo";
-  static const message = "Message";
-  static const exhibition = "Exhibition";
-  static const carType = "Car_Type";
+  static const khutba = "khutba";
+  static const iqamaTimes = "Iqama_times";
+  static const sliders = "sliders";
   static const user = "User";
-  static const car = "Car";
+  static const phone = "Phones";
   static const rent = "Rent";
   static const rentedCars = "Rented Cars";
 

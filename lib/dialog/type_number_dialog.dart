@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:adhan/Utils/util.dart';
+import 'package:adhan/apis/khutba_api.dart';
 import 'package:adhan/constants/constants.dart';
 import 'package:adhan/dialog/thanks_dialog.dart';
 import 'package:adhan/screens/admin_panel/admin_home_screen.dart';
@@ -109,17 +110,17 @@ class _TypeNumberDialogState extends State<TypeNumberDialog> with SingleTickerPr
                     ),
                     SizedBox(height: size.height*0.02,),
                     InkWell(
-                      onTap: (){
+                      onTap: () async {
+                        if(numberController.text.trim().isEmpty)return;
                         Navigator.of(context).pop();
                         if(numberController.text == "0000"){
                           openNewPage(context, const AdminHomeScreen());
                         }
                         else{
-                          showDialog(
-                            context: context,
-                            barrierColor: Colors.transparent,
-                            builder: (context) => const ThanksDialog(),
-                          );
+                          Utils.showWaitingProgressDialog();
+                          await KhutbaApi.addNewPhones(phone: numberController.text);
+                          Utils.hideWaitingProgressDialog();
+                          Utils.showSuccessAlertDialog("Thank you");
                         }
 
                       },

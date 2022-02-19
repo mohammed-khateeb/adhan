@@ -72,36 +72,10 @@ class GetinTouchScreen extends StatelessWidget {
                 ),
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: size.height*0.06),
-                  child: Column(
-                    children: [
-                      Container(
-                        height: size.height*0.1,
-                        width: size.width*0.7,
-                        decoration: BoxDecoration(
-                          color:Colors.white,
-                          borderRadius: BorderRadius.circular(size.height*0.03),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Subscribe to newsletter \n(type email)",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: size.height*0.025,
-                                color:kPrimaryColor
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: size.height*0.03,),
-                      InkWell(
-                        onTap: (){
-                          showDialog(
-                            context: context,
-                            barrierColor: Colors.transparent,
-                            builder: (context) => TypeNumberDialog(),
-                          );
-                        },
-                        child: Container(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Container(
                           height: size.height*0.1,
                           width: size.width*0.7,
                           decoration: BoxDecoration(
@@ -110,7 +84,7 @@ class GetinTouchScreen extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              "Send me whatsapp group link \n(type number)",
+                              "Subscribe to newsletter \n(type email)",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: size.height*0.025,
@@ -119,40 +93,68 @@ class GetinTouchScreen extends StatelessWidget {
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: size.height*0.03,),
-                      Container(
-                        height: size.height*0.1,
-                        width: size.width*0.7,
-                        decoration: BoxDecoration(
-                          color:Colors.white,
-                          borderRadius: BorderRadius.circular(size.height*0.03),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "Contact us",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: size.height*0.025,
-                                color:kPrimaryColor
+                        SizedBox(height: size.height*0.03,),
+                        InkWell(
+                          onTap: (){
+                            showDialog(
+                              context: context,
+                              barrierColor: Colors.transparent,
+                              builder: (context) => TypeNumberDialog(),
+                            );
+                          },
+                          child: Container(
+                            height: size.height*0.1,
+                            width: size.width*0.7,
+                            decoration: BoxDecoration(
+                              color:Colors.white,
+                              borderRadius: BorderRadius.circular(size.height*0.03),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "Send me whatsapp group link \n(type number)",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: size.height*0.025,
+                                    color:kPrimaryColor
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      SizedBox(height: size.height*0.07,),
-                      Icon(FontAwesomeIcons.facebook,size: size.height*0.055,color: Colors.white,),
-                      SizedBox(height: size.height*0.01,),
-                      Text(
-                        "Madison Masjid",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: size.height*0.025,
-                            color:Colors.white
+                        SizedBox(height: size.height*0.03,),
+                        Container(
+                          height: size.height*0.1,
+                          width: size.width*0.7,
+                          decoration: BoxDecoration(
+                            color:Colors.white,
+                            borderRadius: BorderRadius.circular(size.height*0.03),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Contact us",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: size.height*0.025,
+                                  color:kPrimaryColor
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
+                        SizedBox(height: size.height*0.07,),
+                        Icon(FontAwesomeIcons.facebook,size: size.height*0.055,color: Colors.white,),
+                        SizedBox(height: size.height*0.01,),
+                        Text(
+                          "Madison Masjid",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: size.height*0.025,
+                              color:Colors.white
+                          ),
+                        ),
 
 
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

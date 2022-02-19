@@ -1,0 +1,6 @@
+io/flutter/plugins/GeneratedPluginRegistrant.java
+ io.flutter.plugins.GeneratedPluginRegistrant
+tech/rumman/adhan/MainActivity.java
+ tech.rumman.adhan.MainActivity
+tech/rumman/adhan/BuildConfig.java
+ tech.rumman.adhan.BuildConfig

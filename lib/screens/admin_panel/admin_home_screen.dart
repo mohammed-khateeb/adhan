@@ -1,11 +1,12 @@
 
 import 'package:adhan/Utils/util.dart';
 import 'package:adhan/constants/constants.dart';
+import 'package:adhan/screens/admin_panel/phones_screen.dart';
+import 'package:adhan/screens/admin_panel/slider_images_screen.dart';
 import 'package:adhan/screens/khutba_schedule.dart';
 import 'package:adhan/screens/iqama_time_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'khutba_schedule.dart';
 
 class AdminHomeScreen extends StatefulWidget {
   const AdminHomeScreen({Key? key}) : super(key: key);
@@ -27,7 +28,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           elevation: 0,
           child: Icon(
             Icons.arrow_back_ios_sharp,
-            color: kPrimaryColor,
+            color: Colors.white,
             size: size.height*0.03,
           ),
           onPressed: ()=>Navigator.pop(context),
@@ -90,7 +91,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                           setState(() {
                             selectedIndex = 0;
                           });
-                          openNewPage(context, const KhutbaSchedule());
+                          openNewPage(context, const KhutbaScheduleScreen(isAdmin: true,));
                         },
                         child: Container(
                           height: size.height*0.062,
@@ -124,7 +125,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                           setState(() {
                             selectedIndex = 1;
                           });
-                          openNewPage(context, const IqamaTimeScreen());
+                          openNewPage(context, const IqamaTimeScreen(isAdmin: true,));
                         },
                         child: Container(
                           height: size.height*0.062,
@@ -158,7 +159,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                           setState(() {
                             selectedIndex = 2;
                           });
-                          openNewPage(context, const KhutbaScheduleScreen());
+                          openNewPage(context, const PhonesScreen());
                         },
                         child: Container(
                           height: size.height*0.062,
@@ -187,6 +188,41 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                           ),
                         ),
                       ),
+                      InkWell(
+                        onTap: (){
+                          setState(() {
+                            selectedIndex = 3;
+                          });
+                          openNewPage(context, const SliderImagesScreen());
+                        },
+                        child: Container(
+                          height: size.height*0.062,
+                          width: size.width*0.72,
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                spreadRadius: 0.2,
+                                blurRadius: 5,
+                                offset: const Offset(
+                                    1, 7), // changes position of shadow
+                              ),
+                            ],
+                            color:selectedIndex == 3? kSecondaryColor:Colors.white,
+                            borderRadius: BorderRadius.circular(size.height*0.2),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Slider images",
+                              style: TextStyle(
+                                  fontSize: size.height*0.03,
+                                  color:selectedIndex == 3? Colors.white:kPrimaryColor
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: size.height*0.02)
 
                     ],
                   ),

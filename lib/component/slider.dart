@@ -1,16 +1,34 @@
+import 'package:adhan/apis/khutba_api.dart';
 import 'package:adhan/constants/constants.dart';
+import 'package:adhan/models/slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
-class BuildSlider extends StatelessWidget {
+class BuildSlider extends StatefulWidget {
   final Color? paginationColor;
   const BuildSlider({Key? key,this.paginationColor}): super(key: key);
 
   @override
+  State<BuildSlider> createState() => _BuildSliderState();
+}
+
+class _BuildSliderState extends State<BuildSlider> {
+
+  List<SliderImage>? sliders;
+  @override
+  void initState() {
+    KhutbaApi.getSliders().then((value) {
+      setState(() {
+        sliders = value;
+      });
+    });
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return SizedBox(
+    return sliders!=null?SizedBox(
       height: size.height*0.26,
       child: Swiper(
         outer: true,
@@ -34,8 +52,8 @@ class BuildSlider extends StatelessWidget {
                   ),
                 ],
                 image: DecorationImage(
-                    image: NetworkImage("https://cdn.pixabay.com/photo/2021/08/25/20/42/field-6574455__340.jpg"),
-                    fit: BoxFit.fill),
+                    image: NetworkImage(sliders![index].url!),
+                    fit: BoxFit.cover),
               ),
             ),
           );
@@ -51,7 +69,7 @@ class BuildSlider extends StatelessWidget {
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   scrollDirection: Axis.horizontal,
-                  itemCount: 2,
+                  itemCount: sliders!.length,
                   itemBuilder: (_, index) {
                     return Padding(
                       padding:
@@ -62,7 +80,7 @@ class BuildSlider extends StatelessWidget {
                               ? BorderRadius.circular(
                               size.height * 0.02)
                               : null,
-                          color:  paginationColor??kPrimaryColor,
+                          color:  widget.paginationColor??kPrimaryColor,
                           shape: config.activeIndex != index
                               ? BoxShape.circle
                               : BoxShape.rectangle,
@@ -77,8 +95,8 @@ class BuildSlider extends StatelessWidget {
               ));
         })),
 
-        itemCount: 2,
+        itemCount: sliders!.length,
       ),
-    );
+    ):SizedBox();
   }
 }
